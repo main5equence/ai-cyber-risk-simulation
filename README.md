@@ -17,6 +17,7 @@ This project provides an interactive decision-support platform that allows users
 
 The platform combines cyber risk modeling, Monte Carlo simulations, and data visualization to support cybersecurity decision-making.
 
+![Dashboard](screenshots/sc1.png)
 
 ---
 
@@ -61,6 +62,10 @@ Represents the number of cybersecurity incidents experienced in the previous yea
 
 These parameters are used to calculate a normalized cyber risk score.
 
+![Dashboard](screenshots/sc4.png)
+![Dashboard](screenshots/sc5.png)
+
+
 ---
 
 ## Cyber Risk Modeling
@@ -94,6 +99,9 @@ Each simulation generates potential financial losses, allowing the system to est
 
 These metrics are commonly used in financial risk analysis.
 
+![Dashboard](screenshots/sc2.png)
+
+
 ---
 
 ## Visualization Dashboard
@@ -114,6 +122,11 @@ Shows estimated probabilities of different cyber attack scenarios.
 
 Strategy Optimization  
 Compares cybersecurity investment strategies and recommends the option that minimizes total expected cost.
+
+![Dashboard](screenshots/sc3.png)
+
+![Dashboard](screenshots/sc6.png)
+
 
 ---
 
