@@ -108,19 +108,19 @@ These metrics are commonly used in financial risk analysis.
 
 The dashboard includes several interactive visualizations.
 
-Risk Gauge  
+- Risk Gauge  
 Displays the overall cyber risk level.
 
-Loss Distribution  
+- Loss Distribution  
 Shows the probability distribution of potential financial losses.
 
-Cyber Risk Heatmap  
+- Cyber Risk Heatmap  
 Illustrates how security training and threat detection influence cyber risk.
 
-Attack Exposure  
+- Attack Exposure  
 Shows estimated probabilities of different cyber attack scenarios.
 
-Strategy Optimization  
+- Strategy Optimization  
 Compares cybersecurity investment strategies and recommends the option that minimizes total expected cost.
 
 ![Dashboard](screenshots/sc3.png)
