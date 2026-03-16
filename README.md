@@ -48,16 +48,16 @@ The web application allows users to simulate cyber risk scenarios and visualize 
 
 The platform evaluates an organization's cybersecurity posture based on several parameters:
 
-Security Training  
+- Security Training  
 Represents employee cybersecurity awareness and training level.
 
-Threat Detection  
+- Threat Detection  
 Represents the organization's ability to detect cyber threats (SIEM, SOC monitoring, EDR/XDR systems).
 
-Incident Response  
+- Incident Response  
 Represents how efficiently the organization can respond to cyber incidents.
 
-Historical Incidents  
+- Historical Incidents  
 Represents the number of cybersecurity incidents experienced in the previous year.
 
 These parameters are used to calculate a normalized cyber risk score.
