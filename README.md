@@ -16,7 +16,8 @@ Modern organizations face increasing cyber threats that can lead to significant 
 
 
 
-![Dashboard](screenshots/sc1.png)
+![Dashboard](screenshots/sc1ml.png)
+![Dashboard](screenshots/sc1.1.png)
 
 ---
 
@@ -67,8 +68,8 @@ These inputs are used to:
 The results are presented in an interactive dashboard, enabling users to explore how different factors influence risk and potential impact.
 
 
-![Dashboard](screenshots/sc4.png)
-![Dashboard](screenshots/sc5.png)
+![Dashboard](screenshots/sc4ml.png)
+![Dashboard](screenshots/sc5ml.png)
 
 
 ---
@@ -104,7 +105,7 @@ Each simulation generates a potential financial loss, which is then used to esti
 
 These metrics are widely used in financial risk analysis to quantify uncertainty and downside risk.
 
-![Dashboard](screenshots/sc2.png)
+![Dashboard](screenshots/sc2ml.png)
 
 
 ---
@@ -143,8 +144,7 @@ The dashboard provides interactive visualizations and allows users to run analys
 The dashboard enables users to explore how changes in security posture affect risk, uncertainty, and potential financial outcomes.
 
 
-![Dashboard](screenshots/sc3.png)
-![Dashboard](screenshots/sc6.png)
+![Dashboard](screenshots/sc3ml.png)
 
 
 ---
