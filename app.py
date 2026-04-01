@@ -29,7 +29,7 @@ ml_model = load_ml_model()
 st.title("Cyber Risk Decision Platform")
 st.caption(
     "Interactive dashboard for cyber risk analysis, Monte Carlo loss simulation, "
-    "and AI-assisted investment strategy optimization."
+    "and AI-assisted strategy evaluation."
 )
 
 # Sidebar inputs
