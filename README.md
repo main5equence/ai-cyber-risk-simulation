@@ -14,10 +14,16 @@ https://ai-cyber-risk-simulation-platform.streamlit.app/
 
 Modern organizations face increasing cyber threats that can lead to significant financial and operational losses. Understanding how different factors influence risk exposure is critical for making informed cybersecurity decisions. This project provides an interactive platform for exploring cyber risk scenarios, simulating potential attack outcomes, and evaluating the impact of different security strategies. The system combines probabilistic modelling (Monte Carlo simulation), machine learning, and data visualization to estimate risk levels and potential losses, supporting more data-driven cybersecurity decision-making.
 
-
-
 ![Dashboard](screenshots/sc1ml.png)
+- **AI-Enhanced Analysis**
+  - Incorporates a machine learning model (Random Forest)
+  - Provides more data-driven risk estimation and refined predictions
+
 ![Dashboard](screenshots/sc1.1.png)
+- **Standard Simulation**
+  - Uses predefined logic and probabilistic modelling (Monte Carlo)
+  - Estimates risk and financial impact based on input parameters
+
 
 ---
 
