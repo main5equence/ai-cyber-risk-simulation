@@ -1,7 +1,8 @@
 # AI Cyber Risk Simulation Platform
 
-AI Cyber Risk Simulation Platform is an interactive cybersecurity analytics dashboard that models cyber risk exposure and simulates financial losses from cyber attacks.
-The platform allows users to analyze an organization's cybersecurity posture, estimate potential financial losses, and evaluate cybersecurity investment strategies using Monte Carlo simulation and interactive visualizations.
+AI Cyber Risk Simulation Platform is an interactive cybersecurity analytics dashboard that combines Monte Carlo modelling with machine learning to model cyber risk exposure and simulates financial losses from cyber attacks. The platform allows users to analyze an organization's cybersecurity posture, estimate potential financial losses, and evaluate cybersecurity investment strategies by simulating realistic attack scenarios.
+
+---
 
 Live demo:
 
@@ -11,11 +12,9 @@ https://ai-cyber-risk-simulation-platform.streamlit.app/
 
 ## Project Overview
 
-Modern organizations face increasing cyber threats that can cause significant financial and operational damage. Decision-makers must evaluate how cybersecurity investments influence risk exposure and potential losses.
+Modern organizations face increasing cyber threats that can lead to significant financial and operational losses. Understanding how different factors influence risk exposure is critical for making informed cybersecurity decisions. This project provides an interactive platform for exploring cyber risk scenarios, simulating potential attack outcomes, and evaluating the impact of different security strategies. The system combines probabilistic modelling (Monte Carlo simulation), machine learning, and data visualization to estimate risk levels and potential losses, supporting more data-driven cybersecurity decision-making.
 
-This project provides an interactive decision-support platform that allows users to explore cyber risk scenarios, simulate cyber incidents, and evaluate cybersecurity strategies.
 
-The platform combines cyber risk modeling, Monte Carlo simulations, and data visualization to support cybersecurity decision-making.
 
 ![Dashboard](screenshots/sc1.png)
 
@@ -23,14 +22,12 @@ The platform combines cyber risk modeling, Monte Carlo simulations, and data vis
 
 ## Key Features
 
-- Cyber risk scoring model
-- Monte Carlo simulation of cyber incidents
-- Financial loss estimation
-- Value at Risk (VaR) and Conditional Value at Risk (CVaR)
-- Cyber risk heatmap visualization
-- Attack scenario probability analysis
-- Cybersecurity investment strategy optimization
-- Interactive dashboard built with Streamlit
+- ML-based risk prediction (Random Forest)
+- Monte Carlo simulation for cyber incident modelling
+- Probabilistic financial loss estimation
+- Risk metrics: VaR and CVaR
+- Scenario-based risk analysis
+- Interactive data visualization (Streamlit)
 
 ---
 
@@ -46,21 +43,29 @@ The web application allows users to simulate cyber risk scenarios and visualize 
 
 ## How the Platform Works
 
-The platform evaluates an organization's cybersecurity posture based on several parameters:
+The platform evaluates an organization's cybersecurity posture based on a set of key input parameters:
 
-- Security Training  
-Represents employee cybersecurity awareness and training level.
+- **Security Training**  
+  Reflects employee awareness and preparedness for cyber threats.
 
-- Threat Detection  
-Represents the organization's ability to detect cyber threats (SIEM, SOC monitoring, EDR/XDR systems).
+- **Threat Detection**  
+  Represents the organization's ability to identify threats (e.g. SIEM, SOC, EDR/XDR).
 
-- Incident Response  
-Represents how efficiently the organization can respond to cyber incidents.
+- **Incident Response**  
+  Measures how effectively the organization can respond to and contain incidents.
 
-- Historical Incidents  
-Represents the number of cybersecurity incidents experienced in the previous year.
+- **Historical Incidents**  
+  Captures the number of past cybersecurity incidents.
 
-These parameters are used to calculate a normalized cyber risk score.
+These inputs are used to:
+
+1. Estimate a cyber risk score using a machine learning model  
+2. Simulate potential attack scenarios using Monte Carlo methods  
+3. Calculate the distribution of possible financial losses  
+4. Derive risk metrics such as VaR and CVaR  
+
+The results are presented in an interactive dashboard, enabling users to explore how different factors influence risk and potential impact.
+
 
 ![Dashboard](screenshots/sc4.png)
 ![Dashboard](screenshots/sc5.png)
@@ -82,22 +87,22 @@ Risk score interpretation:
 
 ## Monte Carlo Simulation
 
-The platform performs thousands of simulated cyber attack scenarios.
+The platform runs thousands of simulated cyber attack scenarios to model uncertainty and potential outcomes.
 
-The simulation includes multiple types of cyber attacks:
+Simulated attack types include:
 
-- Phishing
-- Ransomware
-- Data breaches
-- Insider threats
+- Phishing  
+- Ransomware  
+- Data breaches  
+- Insider threats  
 
-Each simulation generates potential financial losses, allowing the system to estimate:
+Each simulation generates a potential financial loss, which is then used to estimate:
 
-- Expected Annual Loss
-- Value at Risk (VaR)
-- Conditional Value at Risk (CVaR)
+- **Expected Annual Loss (EAL)**  
+- **Value at Risk (VaR)**  
+- **Conditional Value at Risk (CVaR)**  
 
-These metrics are commonly used in financial risk analysis.
+These metrics are widely used in financial risk analysis to quantify uncertainty and downside risk.
 
 ![Dashboard](screenshots/sc2.png)
 
@@ -106,25 +111,39 @@ These metrics are commonly used in financial risk analysis.
 
 ## Visualization Dashboard
 
-The dashboard includes several interactive visualizations.
+The dashboard provides interactive visualizations and allows users to run analysis in two modes:
 
-- Risk Gauge  
-Displays the overall cyber risk level.
+- **Standard Simulation**
+  - Uses predefined logic and probabilistic modelling (Monte Carlo)
+  - Estimates risk and financial impact based on input parameters
 
-- Loss Distribution  
-Shows the probability distribution of potential financial losses.
+- **AI-Enhanced Analysis**
+  - Incorporates a machine learning model (Random Forest)
+  - Provides more data-driven risk estimation and refined predictions
 
-- Cyber Risk Heatmap  
-Illustrates how security training and threat detection influence cyber risk.
+---
 
-- Attack Exposure  
-Shows estimated probabilities of different cyber attack scenarios.
+### Available Visualizations
 
-- Strategy Optimization  
-Compares cybersecurity investment strategies and recommends the option that minimizes total expected cost.
+- **Risk Gauge**  
+  Displays the overall cyber risk level (low, medium, high).
+
+- **Loss Distribution**  
+  Shows the probability distribution of simulated financial losses.
+
+- **Cyber Risk Heatmap**  
+  Illustrates how factors such as security training and threat detection influence risk levels.
+
+- **Attack Exposure**  
+  Displays estimated probabilities and impact of different cyber attack scenarios.
+
+- **Strategy Comparison**  
+  Compares different cybersecurity strategies and their impact on expected losses.
+
+The dashboard enables users to explore how changes in security posture affect risk, uncertainty, and potential financial outcomes.
+
 
 ![Dashboard](screenshots/sc3.png)
-
 ![Dashboard](screenshots/sc6.png)
 
 
@@ -134,7 +153,8 @@ Compares cybersecurity investment strategies and recommends the option that mini
 
 Python  
 Streamlit  
-NumPy  
+NumPy
+Scikit-learn 
 Plotly  
 Monte Carlo Simulation  
 Cyber Risk Modeling  
@@ -143,7 +163,13 @@ Cyber Risk Modeling
 
 ## Project Workflow
 
-User Security Profile → Cyber Risk Model → Monte Carlo Simulation → Risk Metrics Calculation → Interactive Streamlit Dashboard → Strategy Optimization
+1. **User Input** – define security parameters  
+2. **Risk Estimation** – ML-based or rule-based scoring  
+3. **Simulation** – Monte Carlo attack scenarios  
+4. **Loss Modeling** – generate financial loss distribution  
+5. **Risk Metrics** – calculate EAL, VaR, CVaR  
+6. **Visualization** – interactive dashboard (Streamlit)  
+7. **Strategy Comparison** – evaluate different security decisions
 
 ---
 
@@ -160,6 +186,15 @@ ai-cyber-risk-simulation
 |
 ├── attack_simulation.py
 │   Monte Carlo simulation engine for cyber incidents
+|
+├── ml_risk_model.py
+|   Machine Learning model (training and loading)
+|
+├── ml_model.pkl
+|   Trained machine learning model (Random Forest) used for risk prediction
+|
+├── train_model.py
+|   Training pipeline for the ML model (data processing, model training, and persistence)
 |
 ├── optimizer.py
 │   Cybersecurity strategy evaluation and optimization
@@ -208,11 +243,20 @@ http://localhost:8501
 
 ## Use Cases
 
-Cybersecurity risk analysis  
-Cybersecurity investment planning  
-Security posture evaluation  
-Cyber risk modeling research  
-Educational cybersecurity simulations  
+- **Cybersecurity risk analysis**  
+  Assess potential risk levels and financial impact of cyber threats.
+
+- **Cybersecurity investment planning**  
+  Evaluate how different security measures influence risk and expected losses.
+
+- **Security posture evaluation**  
+  Analyze how factors like training, detection, and response affect overall risk.
+
+- **Cyber risk modelling research**  
+  Experiment with probabilistic simulations and ML-based risk estimation.
+
+- **Educational simulations**  
+  Demonstrate cybersecurity risk concepts in an interactive and visual way.
 
 ---
 
