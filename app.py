@@ -6,18 +6,31 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 from risk_model import calculate_risk
-from attack_simulation import simulate_losses, ATTACK_TYPES
+from attack_simulation import simulate_losses, ATTACK_TYPES, get_attack_parameters
 from optimizer import evaluate_strategy
+from ml_risk_model import CyberRiskMLModel
 
 
 st.set_page_config(
-    page_title="AI Cyber Risk Decision Platform",
+    page_title="Cyber Risk Decision Platform",
     page_icon="🛡️",
     layout="wide",
 )
 
-st.title("AI Cyber Risk Decision Platform")
-st.caption("Interactive dashboard for cyber risk analysis, loss simulation, and investment strategy optimization.")
+@st.cache_resource
+def load_ml_model():
+    model = CyberRiskMLModel()
+    model.load()   
+    return model
+
+
+ml_model = load_ml_model()
+
+st.title("Cyber Risk Decision Platform")
+st.caption(
+    "Interactive dashboard for cyber risk analysis, Monte Carlo loss simulation, "
+    "and AI-assisted investment strategy optimization."
+)
 
 # Sidebar inputs
 st.sidebar.header("Company Security Profile")
@@ -26,17 +39,22 @@ training = st.sidebar.slider("Security Training", 0.0, 1.0, 0.40, 0.01)
 detection = st.sidebar.slider("Threat Detection", 0.0, 1.0, 0.50, 0.01)
 response = st.sidebar.slider("Incident Response", 0.0, 1.0, 0.50, 0.01)
 incidents = st.sidebar.slider("Incidents Last Year", 0, 20, 3, 1)
+use_ai = st.sidebar.checkbox("Enable AI-driven risk modeling", value=True)
 
 run = st.button("Run Analysis", type="primary")
 
 if run:
     risk = calculate_risk(training, detection, response, incidents)
 
+    active_ml_model = ml_model if use_ai else None
+
+   
     losses = simulate_losses(
         risk_score=risk,
         detection=detection,
         response=response,
-        n_simulations=4000,
+        ml_model=active_ml_model,
+        n_simulations=50,
     )
 
     expected_loss = float(np.mean(losses))
@@ -44,6 +62,9 @@ if run:
     var_95 = float(np.percentile(losses, 95))
     worst_5 = losses[losses >= var_95]
     cvar_95 = float(np.mean(worst_5)) if len(worst_5) > 0 else var_95
+
+    model_label = "AI-driven model" if use_ai else "Rule-based model"
+    st.info(f"Analysis mode: **{model_label}**")
 
     # Top metrics
     col1, col2, col3, col4 = st.columns(4)
@@ -111,13 +132,22 @@ if run:
     # Attack exposure
     st.subheader("Attack Exposure by Scenario")
     exposure_rows = []
+
     for attack_name, params in ATTACK_TYPES.items():
-        scenario_probability = min(risk * params["prob_multiplier"], 0.95)
+        calibrated = get_attack_parameters(
+            risk_score=risk,
+            detection=detection,
+            response=response,
+            params=params,
+            ml_model=active_ml_model,
+        )
+
         exposure_rows.append(
             {
                 "Attack Type": attack_name,
-                "Probability": scenario_probability,
-                "Expected Severity": params["mean"],
+                "Probability": calibrated["attack_prob"],
+                "Expected Severity": calibrated["mean_loss"],
+                "Std Severity": calibrated["std_loss"],
             }
         )
 
@@ -131,11 +161,13 @@ if run:
     )
     st.plotly_chart(exposure_fig, use_container_width=True)
 
-    # Strategy optimizer
-    st.subheader("AI Investment Strategy Optimizer")
-    strategy_results = evaluate_strategy(base_incidents=incidents, n_simulations=2000)
-    strategy_df = pd.DataFrame(strategy_results)
+    st.subheader("Scenario Parameters")
+    st.dataframe(exposure_df, use_container_width=True)
 
+    # Strategy optimizer
+    st.subheader("Investment Strategy Optimizer")
+    strategy_results = evaluate_strategy(base_incidents=incidents, n_simulations=20)
+    strategy_df = pd.DataFrame(strategy_results)
     best_strategy = strategy_df.iloc[0]
 
     st.success(
@@ -153,7 +185,7 @@ if run:
     )
     st.plotly_chart(strategy_fig, use_container_width=True)
 
-    # Recommendation text
+    # Recommendation
     st.subheader("Executive Recommendation")
 
     recommendations = []
@@ -161,18 +193,19 @@ if run:
     if training < 0.5:
         recommendations.append("- Increase employee cyber awareness and phishing training.")
     if detection < 0.6:
-        recommendations.append("- Improve detection stack: SIEM, EDR/XDR, alert triage, monitoring.")
+        recommendations.append("- Improve detection stack: SIEM, EDR/XDR, monitoring.")
     if response < 0.6:
-        recommendations.append("- Strengthen incident response playbooks and recovery procedures.")
+        recommendations.append("- Strengthen incident response playbooks.")
     if incidents >= 5:
-        recommendations.append("- High incident history suggests elevated residual cyber exposure.")
+        recommendations.append("- High incident history suggests elevated cyber exposure.")
+    if use_ai:
+        recommendations.append("- AI-calibrated modeling dynamically adjusts risk parameters.")
 
     if not recommendations:
-        recommendations.append("- Current security posture is relatively mature; focus on continuous optimization.")
+        recommendations.append("- Security posture is relatively mature; focus on optimization.")
 
     st.markdown("\n".join(recommendations))
 
 else:
     st.info("Set the company profile in the sidebar and click **Run Analysis**.")
-
     
