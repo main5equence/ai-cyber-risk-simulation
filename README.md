@@ -2,6 +2,13 @@
 
 AI Cyber Risk Simulation Platform is an interactive cybersecurity analytics dashboard that combines Monte Carlo modelling with machine learning to model cyber risk exposure and simulates financial losses from cyber attacks. The platform allows users to analyze an organization's cybersecurity posture, estimate potential financial losses, and evaluate cybersecurity investment strategies by simulating realistic attack scenarios.
 
+![Python](https://img.shields.io/badge/python-3.10+-blue)
+![Streamlit](https://img.shields.io/badge/streamlit-app-red)
+![Machine Learning](https://img.shields.io/badge/ML-random_forest-green)
+![Monte Carlo](https://img.shields.io/badge/simulation-monte_carlo-orange)
+![Security](https://img.shields.io/badge/security-policy-blue)
+![Dependabot](https://img.shields.io/badge/dependabot-enabled-brightgreen)
+
 ---
 
 Live demo:
