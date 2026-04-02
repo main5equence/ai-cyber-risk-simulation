@@ -28,3 +28,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ML artifacts (optional future use)
+mlruns/
