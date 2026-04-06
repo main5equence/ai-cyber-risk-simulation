@@ -8,6 +8,7 @@ AI Cyber Risk Simulation Platform is an interactive cybersecurity analytics dash
 ![Monte Carlo](https://img.shields.io/badge/simulation-monte_carlo-orange)
 ![Security](https://img.shields.io/badge/security-policy-blue)
 ![Dependabot](https://img.shields.io/badge/dependabot-enabled-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 ---
 
