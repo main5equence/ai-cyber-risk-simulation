@@ -120,21 +120,6 @@ These metrics are widely used in financial risk analysis to quantify uncertainty
 
 ![Dashboard](screenshots/sc2ml.png)
 
-
----
-
-## Visualization Dashboard
-
-The dashboard provides interactive visualizations and allows users to run analysis in two modes:
-
-- **Standard Simulation**
-  - Uses predefined logic and probabilistic modelling (Monte Carlo)
-  - Estimates risk and financial impact based on input parameters
-
-- **AI-Enhanced Analysis**
-  - Incorporates a machine learning model (Random Forest)
-  - Provides more data-driven risk estimation and refined predictions
-
 ---
 
 ### Available Visualizations
