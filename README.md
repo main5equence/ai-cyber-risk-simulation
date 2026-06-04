@@ -262,5 +262,5 @@ http://localhost:8501
 ## License
 
 Copyright (C) 2026 Dominika Jakubek.
-This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2 as published by the Free Software Foundation.
+GPL-3.0 license
 
